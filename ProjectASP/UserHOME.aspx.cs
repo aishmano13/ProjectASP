@@ -15,10 +15,20 @@ namespace ProjectASP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string st = "select * from Category_Tab";
-            DataSet ds = obj.fn_dataset(st);
-            DataList1.DataSource = ds;
-            DataList1.DataBind();
+            if (!IsPostBack)
+            {
+                string st = "select * from Category_Tab";
+                DataSet ds = obj.fn_dataset(st);
+                DataList1.DataSource = ds;
+                DataList1.DataBind();
+            }
+        }
+
+        protected void ImageButton1_Command(object sender, CommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument);
+            Session["Categoryid"] = id;
+            Response.Redirect("ViewProducts.aspx");
         }
     }
 }

@@ -4,14 +4,31 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace ProjectASP
 {
     public partial class ViewProducts : System.Web.UI.Page
     {
+        Concls obj = new Concls();
         protected void Page_Load(object sender, EventArgs e)
         {
+         if(!IsPostBack)
+            {
+                string k = "select * from Product_Tab where Category_ID=" + Session["Categoryid"] + "";
+                DataSet ds = obj.fn_dataset(k);
+                DataList1.DataSource = ds;
+                DataList1.DataBind();
 
+            }
+        }
+
+        protected void ImageButton1_Command(object sender, CommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument);
+            Session["ProductId"] = id;
+            Response.Redirect("ViewSingleProduct.aspx");
         }
     }
 }

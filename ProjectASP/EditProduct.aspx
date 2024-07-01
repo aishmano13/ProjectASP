@@ -34,6 +34,10 @@
         height: 32px;
         width: 208px;
     }
+        .auto-style11 {
+            width: 100%;
+            height: 630px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -61,12 +65,12 @@
                         <asp:BoundField DataField="Product_Status" HeaderText="Status" />
                         <asp:TemplateField HeaderText="EDIT">
                             <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" OnCommand="LinkButton1_Command" CommandArgument='<%# Eval("Product_ID") %>'>SELECT</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton3" runat="server" CommandArgument='<%# Eval("Product_ID") %>' OnCommand="LinkButton3_Command">SELECT</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="BLOCK">
                             <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton2" runat="server" OnCommand="LinkButton2_Command" CommandArgument='<%# Eval("Product_ID") %>'>SELECT</asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument='<%# Eval("Product_ID") %>' OnCommand="LinkButton4_Command">SELECT</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -86,8 +90,8 @@
             <td class="auto-style2">&nbsp;</td>
             <td class="auto-style3">&nbsp;</td>
             <td class="auto-style1">
-                <asp:Panel ID="Panel1" runat="server" Height="553px" Visible="False" Width="675px">
-                    <table class="w-100">
+                <asp:Panel ID="Panel1" runat="server" Height="730px" Visible="False" Width="675px">
+                    <table class="auto-style11">
                         <tr>
                             <td class="auto-style5">&nbsp;</td>
                             <td class="auto-style7">&nbsp;</td>
@@ -133,7 +137,7 @@
                                 <asp:Label ID="Label3" runat="server" Text="Details"></asp:Label>
                             </td>
                             <td class="auto-style8">
-                                <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                <asp:TextBox ID="TextBox2" runat="server" TextMode="MultiLine" Height="23px"></asp:TextBox>
                             </td>
                             <td class="auto-style10"></td>
                             <td class="auto-style4"></td>

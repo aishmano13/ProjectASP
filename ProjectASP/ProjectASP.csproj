@@ -44,6 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -68,10 +70,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.html" />
+    <Content Include="AccountDetails.aspx" />
     <Content Include="AdminForm.aspx" />
     <Content Include="AdminHOME.aspx" />
+    <Content Include="BillView.aspx" />
     <Content Include="blog_list.html" />
     <Content Include="Category.aspx" />
+    <Content Include="Connected Services\CheckBalance\ProjectASP.CheckBalance.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\CheckBalance\Service.disco" />
+    <None Include="Connected Services\CheckBalance\configuration91.svcinfo" />
+    <None Include="Connected Services\CheckBalance\configuration.svcinfo" />
+    <None Include="Connected Services\CheckBalance\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="contact.html" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\font-awesome.min.css" />
@@ -79,6 +93,7 @@
     <Content Include="css\style.css" />
     <Content Include="EditCategory.aspx" />
     <Content Include="EditProduct.aspx" />
+    <Content Include="Feedback.aspx" />
     <Content Include="images\arrival-bg.jpg" />
     <Content Include="images\arrival-bg.png" />
     <Content Include="images\booklogo.png" />
@@ -110,10 +125,20 @@
     <Content Include="testimonial.html" />
     <Content Include="UserForm.aspx" />
     <Content Include="UserHOME.aspx" />
+    <Content Include="ViewCart.aspx" />
+    <Content Include="ViewFeedback.aspx" />
     <Content Include="ViewProducts.aspx" />
+    <Content Include="ViewSingleProduct.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountDetails.aspx.cs">
+      <DependentUpon>AccountDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccountDetails.aspx.designer.cs">
+      <DependentUpon>AccountDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminForm.aspx.cs">
       <DependentUpon>AdminForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -128,6 +153,13 @@
     <Compile Include="AdminHOME.aspx.designer.cs">
       <DependentUpon>AdminHOME.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BillView.aspx.cs">
+      <DependentUpon>BillView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BillView.aspx.designer.cs">
+      <DependentUpon>BillView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Category.aspx.cs">
       <DependentUpon>Category.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -136,6 +168,11 @@
       <DependentUpon>Category.aspx</DependentUpon>
     </Compile>
     <Compile Include="Concls.cs" />
+    <Compile Include="Connected Services\CheckBalance\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="EditCategory.aspx.cs">
       <DependentUpon>EditCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,6 +186,13 @@
     </Compile>
     <Compile Include="EditProduct.aspx.designer.cs">
       <DependentUpon>EditProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Feedback.aspx.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Feedback.aspx.designer.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.aspx.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
@@ -200,12 +244,33 @@
     <Compile Include="UserHOME.aspx.designer.cs">
       <DependentUpon>UserHOME.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ViewCart.aspx.cs">
+      <DependentUpon>ViewCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewCart.aspx.designer.cs">
+      <DependentUpon>ViewCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFeedback.aspx.cs">
+      <DependentUpon>ViewFeedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFeedback.aspx.designer.cs">
+      <DependentUpon>ViewFeedback.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewProducts.aspx.cs">
       <DependentUpon>ViewProducts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewProducts.aspx.designer.cs">
       <DependentUpon>ViewProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSingleProduct.aspx.cs">
+      <DependentUpon>ViewSingleProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSingleProduct.aspx.designer.cs">
+      <DependentUpon>ViewSingleProduct.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +280,16 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
+    <None Include="Connected Services\CheckBalance\Service.wsdl" />
+    <None Include="Connected Services\CheckBalance\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CheckBalance\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CheckBalance\Service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <Content Include="Site2.Master" />
@@ -229,6 +304,12 @@
   <ItemGroup>
     <Folder Include="Photos\" />
     <Folder Include="Photo\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CheckBalance\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

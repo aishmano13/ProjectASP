@@ -13,6 +13,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <br />
     <table class="w-100">
     <tr>
         <td class="auto-style1">&nbsp;</td>

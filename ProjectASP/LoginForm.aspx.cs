@@ -24,17 +24,19 @@ namespace ProjectASP
             {
                 string st = "select User_ID from Login_Tab where Username='" + TextBox1.Text + "' and Password='" + TextBox2.Text + "'";
                 string id = obj.fn_Scaler(st);
-                Session["rid"] = id;
+                Session["userid"] = id;
                 string strin = "select Login_Type from Login_Tab where Username='" + TextBox1.Text + "' and Password='" + TextBox2.Text + "'";
                 string logt = obj.fn_Scaler(strin);
                 if (logt == "Admin")
                 {
                     Label3.Text = "Admin";
+                    Response.Redirect("AdminHOME.aspx");
 
                 }
                 else if (logt == "User")
                 {
                    Label3.Text = "User";
+                    Response.Redirect("UserHOME.aspx");
                 }
             }
         }

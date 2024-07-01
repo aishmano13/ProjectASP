@@ -24,42 +24,8 @@ namespace ProjectASP
             GridView1.DataBind();
         }
 
-        protected void LinkButton1_Command(object sender, CommandEventArgs e)
-        {
-            Panel1.Visible = true;
-            int id = Convert.ToInt32(e.CommandArgument);
-            Session["uid"] = id;
-            string st = "select * from Product_Tab";
-            SqlDataReader dr = ob.fn_datareader(st);
-            while(dr.Read())
-            {
-                TextBox1.Text = dr["Product_Name"].ToString();
-                Image1.ImageUrl = dr["Product_Image"].ToString();
-                TextBox2.Text = dr["Product_Details"].ToString();
-                TextBox3.Text = dr["Product_Price"].ToString();
-                TextBox4.Text = dr["Product_Stock"].ToString();
-            }
-        }
-
-        protected void LinkButton2_Command(object sender, CommandEventArgs e)
-        {
-            int id1 = Convert.ToInt32(e.CommandArgument);
-            string str = "select Product_Status from Product_Tab where Product_ID=" + id1 + "";
-            string s = ob.fn_Scaler(str);
-            if(s=="Available")
-            {
-                string d = "update Product_Tab set Product_Status= 'Unavailable' where Product_ID=" + id1 + "";
-                int i = ob.fn_Nonquery(d);
-                grid_bind();
-            }
-            else
-            {
-                string k = "update Product_Tab set Product_Status= 'Available' where Product_ID=" + id1 + "";
-                int j = ob.fn_Nonquery(k);
-                grid_bind();
-            }
-        }
-
+       
+       
         protected void Button1_Click(object sender, EventArgs e)
         {
             string p = "~/Photo/" + FileUpload1.FileName;
@@ -71,6 +37,43 @@ namespace ProjectASP
                 Label6.Text = "*Updated";
             }
             grid_bind();
+        }
+
+        protected void LinkButton3_Command(object sender, CommandEventArgs e)
+        {
+            Panel1.Visible = true;
+            int id = Convert.ToInt32(e.CommandArgument);
+            Session["uid"] = id;
+            string st = "select * from Product_Tab Where Product_ID="+ Session["uid"] + "";
+            SqlDataReader dr = ob.fn_datareader(st);
+            while (dr.Read())
+            {
+                TextBox1.Text = dr["Product_Name"].ToString();
+                Image1.ImageUrl = dr["Product_Image"].ToString();
+                TextBox2.Text = dr["Product_Details"].ToString();
+                TextBox3.Text = dr["Product_Price"].ToString();
+                TextBox4.Text = dr["Product_Stock"].ToString();
+            }
+
+        }
+
+        protected void LinkButton4_Command(object sender, CommandEventArgs e)
+        {
+            int id1 = Convert.ToInt32(e.CommandArgument);
+            string str = "select Product_Status from Product_Tab where Product_ID=" + id1 + "";
+            string s = ob.fn_Scaler(str);
+            if (s == "Available")
+            {
+                string d = "update Product_Tab set Product_Status= 'Unavailable' where Product_ID=" + id1 + "";
+                int i = ob.fn_Nonquery(d);
+                grid_bind();
+            }
+            else
+            {
+                string k = "update Product_Tab set Product_Status= 'Available' where Product_ID=" + id1 + "";
+                int j = ob.fn_Nonquery(k);
+                grid_bind();
+            }
         }
     }
 }
